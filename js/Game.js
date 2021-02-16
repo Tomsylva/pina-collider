@@ -120,7 +120,7 @@ class Game {
       }
     });
 
-    if (this.drinks == 3) {
+    if (this.drinks === 3) {
       this.drunkMode = true;
       breathaliser.innerText = "DRUNKMDE ACTIMATED";
     }
