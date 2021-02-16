@@ -52,6 +52,13 @@ class Game {
 
             if(this.collisionCheck(this.player, shark)){
                 noLoop();
+                const button = document.createElement("button");
+                button.innerText = "Play again?"
+                document.body.appendChild(button);
+                button.onclick = () => {
+                    button.parentNode.removeChild(button);
+                    resetSketch();
+                }
             }
 
         });
@@ -60,7 +67,6 @@ class Game {
 
         if(frameCount % 30 === 0){
             this.coconuts.push(new Coconut());
-
         }
         
         this.coconuts.forEach((coconut, index) => {
@@ -72,6 +78,12 @@ class Game {
 
             if(this.collisionCheck(this.player, coconut)){
                 noLoop();
+                const button = document.createElement("button");
+                button.innerText = "Play again?"
+                document.body.appendChild(button);
+                button.onclick = () => {
+                    button.parentNode.removeChild(button);
+                }
             }
         })
      }
