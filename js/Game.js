@@ -11,6 +11,7 @@ class Game {
         this.sharks = [];
         this.coconuts = [];
         this.cocktails = [];
+        this.brewskis = [];
         this.player = new Player;
         this.score = 0;
     }
@@ -39,7 +40,7 @@ class Game {
 
         // SHARK LOGIC
 
-        if (frameCount % 400 === 0){
+        if (frameCount % Math.floor(random(5000)) === 0){
             this.sharks.push(new Shark());
         } 
 
@@ -92,11 +93,23 @@ class Game {
 
         //POWERUPS
 
-        if (frameCount % Math.floor(random(10000)) === 0){
+        if (frameCount % Math.floor(random(5000)) === 0){
             this.cocktails.push(new Cocktail());
         }
         this.cocktails.forEach((cocktail, index) => {
             cocktail.draw();
+            if(cocktail.x + cocktail.width <= 0){
+                this.cocktails.splice(index, 1);
+            }
+        })
+        if (frameCount % Math.floor(random(5000)) === 0){
+            this.brewskis.push(new Beer());
+        }
+        this.brewskis.forEach((beer, index) => {
+            beer.draw();
+            if(beer.x + beer.width <= 0){
+                this.brewskis.splice(index, 1);
+            }
         })
      }
 
