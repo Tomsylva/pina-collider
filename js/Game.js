@@ -13,6 +13,7 @@ class Game {
     this.player = new Player();
     this.score = 0;
     this.drinks = 0;
+    this.drunkMode = false;
   }
 
   setup() {}
@@ -29,7 +30,8 @@ class Game {
     }
 
     document.querySelector("h1 span").innerText = Math.floor(this.score / 10);
-    document.querySelector("h2 span").innerText = this.drinks;
+    const breathaliser = document.querySelector("h2 span");
+    breathaliser.innerText = this.drinks;
 
     this.background.draw();
     this.bar.draw();
@@ -97,25 +99,30 @@ class Game {
       if (cocktail.x + cocktail.width <= 0) {
         this.cocktails.splice(index, 1);
       }
-      if (this.collisionCheck(this.player, cocktail)){
+      if (this.collisionCheck(this.player, cocktail)) {
         this.cocktails.splice(index, 1);
         this.drinks += 1;
-    }
+      }
     });
 
     if (frameCount % Math.floor(random(3000)) === 0) {
       this.brewskis.push(new Beer());
     }
     this.brewskis.forEach((beer, index) => {
-        beer.draw();
-        if (beer.x + beer.width <= 0) {
-          this.brewskis.splice(index, 1);
-        }
-        if (this.collisionCheck(this.player, beer)){
-          this.brewskis.splice(index, 1);
-          this.drinks += 1;
+      beer.draw();
+      if (beer.x + beer.width <= 0) {
+        this.brewskis.splice(index, 1);
       }
-      });
+      if (this.collisionCheck(this.player, beer)) {
+        this.brewskis.splice(index, 1);
+        this.drinks += 1;
+      }
+    });
+
+    if (this.drinks == 3) {
+      this.drunkMode = true;
+      breathaliser.innerText = "DRUNKMDE ACTIMATED";
+    }
   }
 
   collisionCheck(player, obstacle) {
