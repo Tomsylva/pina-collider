@@ -8,6 +8,7 @@ class Game {
     this.bar = new Bar();
     this.sharks = [];
     this.coconuts = [];
+    this.phatCoconuts = [];
     this.cocktails = [];
     this.brewskis = [];
     this.player = new Player();
@@ -82,8 +83,12 @@ class Game {
     // COCONUT LOGIC
     // For notes, see SHARK LOGIC above
 
-    if (frameCount % Math.floor(random(200)) === 0) {
+    if (frameCount % Math.floor(random(350)) === 0) {
       this.coconuts.push(new Coconut());
+    }
+
+    if (frameCount % Math.floor(random(2000)) === 0) {
+      this.coconuts.push(new phatCoconut());
     }
 
     this.coconuts.forEach((coconut, index) => {

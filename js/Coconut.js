@@ -35,3 +35,32 @@ class Coconut {
         image (coconutImage, this.x, this.y, this.width, this.height);
     }
 }
+
+class phatCoconut extends Coconut{
+    constructor(x, width, height, y, velocity, floor, bounces){
+        super(x, width, height, y, velocity, floor, bounces);
+        this.draw = () => {
+            this.velocity += 0.3;
+            this.y += this.velocity;
+    
+            // This ensure the coconuts fall in the same "y" position
+            // This gets used a lot - maybe make into a single function and call it? 
+            if(keyIsDown(39)){
+                this.x -= SPEED;
+            }
+    
+            if(keyIsDown(37)){
+                this.x += SPEED;
+            }
+    
+            if(this.y > 350){
+                if(this.bounces === 0){
+                this.y = 350;
+                }
+            }
+    
+            image (coconutImage, this.x, this.y, this.width, this.height);
+        }
+        
+    }
+}
