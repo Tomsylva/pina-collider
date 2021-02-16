@@ -8,7 +8,6 @@ class Game {
     this.bar = new Bar();
     this.sharks = [];
     this.coconuts = [];
-    this.phatCoconuts = [];
     this.cocktails = [];
     this.brewskis = [];
     this.player = new Player();
@@ -94,7 +93,7 @@ class Game {
     this.coconuts.forEach((coconut, index) => {
       coconut.draw();
 
-      if (coconut.x + coconut.width <= 0) {
+      if (coconut.y >= HEIGHT || coconut.x + coconut.width <= 0) {
         this.coconuts.splice(index, 1);
       }
 
