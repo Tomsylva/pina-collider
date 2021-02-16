@@ -12,6 +12,7 @@ class Game {
     this.brewskis = [];
     this.player = new Player();
     this.score = 0;
+    this.drinks = 0;
   }
 
   setup() {}
@@ -28,6 +29,7 @@ class Game {
     }
 
     document.querySelector("h1 span").innerText = Math.floor(this.score / 10);
+    document.querySelector("h2 span").innerText = this.drinks;
 
     this.background.draw();
     this.bar.draw();
@@ -87,7 +89,7 @@ class Game {
 
     //POWERUPS
 
-    if (frameCount % Math.floor(random(5000)) === 0) {
+    if (frameCount % Math.floor(random(3000)) === 0) {
       this.cocktails.push(new Cocktail());
     }
     this.cocktails.forEach((cocktail, index) => {
@@ -97,10 +99,11 @@ class Game {
       }
       if (this.collisionCheck(this.player, cocktail)){
         this.cocktails.splice(index, 1);
+        this.drinks += 1;
     }
     });
 
-    if (frameCount % Math.floor(random(5000)) === 0) {
+    if (frameCount % Math.floor(random(3000)) === 0) {
       this.brewskis.push(new Beer());
     }
     this.brewskis.forEach((beer, index) => {
@@ -110,6 +113,7 @@ class Game {
         }
         if (this.collisionCheck(this.player, beer)){
           this.brewskis.splice(index, 1);
+          this.drinks += 1;
       }
       });
   }
