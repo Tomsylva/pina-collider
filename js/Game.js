@@ -29,7 +29,8 @@ class Game {
       this.score--;
     }
 
-    document.querySelector("h1 span").innerText = Math.floor(this.score / 10);
+    const currentScore = document.querySelector("h1 span");
+    currentScore.innerText = (Math.floor(this.score / 10) + (this.drinks * 10));
     const breathaliser = document.querySelector("h2 span");
     breathaliser.innerText = this.drinks;
 
