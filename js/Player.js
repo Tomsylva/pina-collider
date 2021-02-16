@@ -9,12 +9,14 @@ class Player {
     this.jumpCount = 0;
   }
 
+  // when up key is pressed, jump is called
   keyPressed() {
     if (keyCode === 38) {
       this.jump();
     }
   }
 
+// makes crab jump
   jump() {
     if (this.jumpCount === 2) {
       return;

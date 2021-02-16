@@ -12,23 +12,24 @@ class Background {
         // Should make crab move a little on it's own
         this.x += (Math.floor(random(-2,2)));
 
-        //reverse key functions
+        // Reverse key functions for when drunkMode is activated
         if(keyIsDown(39)){
-            this.x += 8;
+            this.x += SPEED;
         }
         if(keyIsDown(37)){
-            this.x -= 8
+            this.x -= SPEED;
         }
     }
 
     draw(){
-        //regular key functions when drunkMode is not activated
+        // Regular key functions when drunkMode is not activated
+        // This gets used a lot - maybe make into a single function and call it? 
         if(keyIsDown(39)){
-            this.x -= 8;
+            this.x -= SPEED;
         }
 
         if(keyIsDown(37)){
-            this.x += 8;
+            this.x += SPEED;
         }
         
         // CENTRAL IMAGE
@@ -38,6 +39,8 @@ class Background {
         // LEFT IMAGE
          image(bgImage, this.x - this.width, this.y, this.width, this.height);
 
+
+         // These ensure there is always a scrolling background in either direction
          if (this.x <= - this.width){
              this.x = 0;
          }

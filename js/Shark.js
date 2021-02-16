@@ -4,7 +4,7 @@ class Shark {
         this.x = WIDTH;
         this.width = 300;
         this.height = 150; 
-        this.y = random(0, HEIGHT - this.height);
+        this.y = random(0, HEIGHT - this.height); // Makes shark appear at random onscreen Y value
     }
 
     draw() {

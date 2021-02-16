@@ -15,12 +15,13 @@ class Coconut {
         this.y += this.velocity;
 
         // This ensure the coconuts fall in the same "y" position
+        // This gets used a lot - maybe make into a single function and call it? 
         if(keyIsDown(39)){
-            this.x -=8;
+            this.x -= SPEED;
         }
 
         if(keyIsDown(37)){
-            this.x +=8;
+            this.x += SPEED;
         }
 
         if(this.y > this.floor){

@@ -13,7 +13,7 @@ class Game {
     this.player = new Player();
     this.score = 0;
     this.drinks = 0;
-    this.drunkMode = false;
+    this.drunk = false;
   }
 
   setup() {}
@@ -21,16 +21,22 @@ class Game {
   draw() {
     clear();
 
+    // Increases score as long as crab is moving to the right
     if (keyIsDown(39)) {
       this.score++;
     }
 
+    // Decreases score if crab is moving to the left
     if (keyIsDown(37)) {
       this.score--;
     }
 
+    // Selects the score in the DOM
     const currentScore = document.querySelector("h1 span");
+    //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
     currentScore.innerText = (Math.floor(this.score / 10) + (this.drinks * 10));
+
+    // Increases count for every drink accumulated and displayed on screen.
     const breathaliser = document.querySelector("h2 span");
     breathaliser.innerText = this.drinks;
 
@@ -40,31 +46,41 @@ class Game {
 
     // SHARK LOGIC
 
+    // Makes a shark appear randomly although rarely
     if (frameCount % Math.floor(random(5000)) === 0) {
       this.sharks.push(new Shark());
     }
 
     this.sharks.forEach((shark, index) => {
+      // Draws shark on screen
       shark.draw();
 
+      // Removes hidden sharks from array
       if (shark.x + shark.width <= 0) {
         this.sharks.splice(index, 1);
       }
 
       if (this.collisionCheck(this.player, shark)) {
+        
+        // Stops the loop and game
         noLoop();
+
+        // Creates a play again button
         const button = document.createElement("button");
         button.innerText = "Play again?";
         document.body.appendChild(button);
         button.onclick = () => {
-          //ADD REFRESH FUNCTION
+          //ADD REFRESH FUNCTION IN MAIN.JS- to do
           restartGame();
+
+          // Removes button from the browser
           button.parentNode.removeChild(button);
         };
       }
     });
 
     // COCONUT LOGIC
+    // For notes, see SHARK LOGIC above
 
     if (frameCount % Math.floor(random(200)) === 0) {
       this.coconuts.push(new Coconut());
@@ -90,7 +106,8 @@ class Game {
       }
     });
 
-    //POWERUPS
+    // POWERUPS
+    // For notes, see SHARK LOGIC above
 
     if (frameCount % Math.floor(random(3000)) === 0) {
       this.cocktails.push(new Cocktail());
@@ -100,6 +117,8 @@ class Game {
       if (cocktail.x + cocktail.width <= 0) {
         this.cocktails.splice(index, 1);
       }
+
+      // Removes drink from screen when collision happens and increments drinks by 1
       if (this.collisionCheck(this.player, cocktail)) {
         this.cocktails.splice(index, 1);
         this.drinks += 1;
@@ -120,9 +139,15 @@ class Game {
       }
     });
 
-    if (this.drinks === 3) {
-      this.drunkMode = true;
+    // If this.drinks is more than 3, drunk is activated
+    if (this.drinks >= 3) {
+      this.drunk = true;
       breathaliser.innerText = "DRUNKMDE ACTIMATED";
+      //background.drunkMode();
+      //add a countdown clock from 20s - to do
+      //this.drinks = 0;
+      //this.drunk = false
+      // ** LOGIC is already written in Background, just need to imnplement when this.drunk = true
     }
   }
 

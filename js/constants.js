@@ -1,6 +1,7 @@
 const HEIGHT = 450;
 const WIDTH = 1500;
 const GRAVITY = 0.3;
+const SPEED = 8;
 
 let bgImgage;
 let crabImage;

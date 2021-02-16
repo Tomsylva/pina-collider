@@ -9,12 +9,14 @@ class Bar {
 
     draw() {
         image (barImage, this.x, this.y, this.width, this.height);
-        if(keyIsDown(39)){
-            this.x -=8;
-        }
 
+        // This makes the image of the bar move offscreen when the crab runs forwards
+        // This gets used a lot - maybe make into a single function and call it? 
+        if(keyIsDown(39)){
+            this.x -= SPEED;
+        }
         if(keyIsDown(37)){
-            this.x +=8;
+            this.x += SPEED;
         }
     }
 }
