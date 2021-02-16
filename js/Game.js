@@ -10,6 +10,7 @@ class Game {
         this.bar = new Bar;
         this.sharks = [];
         this.coconuts = [];
+        this.cocktails = [];
         this.player = new Player;
         this.score = 0;
     }
@@ -18,8 +19,7 @@ class Game {
 
     }
 
-
-     draw(){
+    draw(){
 
         clear();
 
@@ -66,7 +66,7 @@ class Game {
 
         // COCONUT LOGIC
 
-        if(frameCount % 30 === 0){
+        if(frameCount % Math.floor(random(200)) === 0){
             this.coconuts.push(new Coconut());
         }
         
@@ -88,6 +88,15 @@ class Game {
                     button.parentNode.removeChild(button);
                 }
             }
+        })
+
+        //POWERUPS
+
+        if (frameCount % Math.floor(random(10000)) === 0){
+            this.cocktails.push(new Cocktail());
+        }
+        this.cocktails.forEach((cocktail, index) => {
+            cocktail.draw();
         })
      }
 
