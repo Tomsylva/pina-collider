@@ -51,6 +51,10 @@ class Game {
       this.sharks.push(new Shark());
     }
 
+    if (this.score < -50){
+      this.sharks.push(new Shark());
+    }
+
     this.sharks.forEach((shark, index) => {
       // Draws shark on screen
       shark.draw();
