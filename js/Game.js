@@ -56,8 +56,9 @@ class Game {
                 button.innerText = "Play again?"
                 document.body.appendChild(button);
                 button.onclick = () => {
+                    //ADD REFRESH FUNCTION
+                    restartGame();
                     button.parentNode.removeChild(button);
-                    resetSketch();
                 }
             }
 
@@ -82,6 +83,8 @@ class Game {
                 button.innerText = "Play again?"
                 document.body.appendChild(button);
                 button.onclick = () => {
+                    //ADD REFRESH FUNCTION
+                    restartGame();
                     button.parentNode.removeChild(button);
                 }
             }

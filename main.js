@@ -21,3 +21,8 @@ function setup() {
 function keyPressed(){
     game.player.keyPressed();
 }
+
+function restartGame(){
+    remove();
+    game.draw();
+}
