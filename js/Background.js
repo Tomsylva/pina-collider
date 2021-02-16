@@ -7,16 +7,28 @@ class Background {
         this.height = HEIGHT;
     }
 
-    draw(){
+    drunkMode(){
 
-        // this.x -= 3; // - this line should not be needed, moves background automatically
-        
+        // Should make crab move a little on it's own
+        this.x += (Math.floor(random(-2,2)));
+
+        //reverse key functions
         if(keyIsDown(39)){
-            this.x -=8;
+            this.x += 8;
+        }
+        if(keyIsDown(37)){
+            this.x -= 8
+        }
+    }
+
+    draw(){
+        //regular key functions when drunkMode is not activated
+        if(keyIsDown(39)){
+            this.x -= 8;
         }
 
         if(keyIsDown(37)){
-            this.x +=8;
+            this.x += 8;
         }
         
         // CENTRAL IMAGE
@@ -29,6 +41,10 @@ class Background {
          if (this.x <= - this.width){
              this.x = 0;
          }
+
+         if (this.x >= + this.width){
+            this.x = 0;
+        }
          
 
     }
