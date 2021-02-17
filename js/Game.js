@@ -162,25 +162,25 @@ class Game {
   collisionCheck(player, obstacle) {
     //   player.left + player.width (players.rightSide)
     //  if player's right side is to the left of the obstacle's left
-    if (player.x + player.width < obstacle.x) {
+    if (player.x + player.width < obstacle.x + 10) {
       return false;
     }
 
     //  obstacle's left and obstacle width (obstacle.rightSide)
     // if obstacle's right side is to the left of player's left
-    if (obstacle.x + obstacle.width < player.x) {
+    if (obstacle.x + obstacle.width < player.x - 10) {
       return false;
     }
 
     // player.topSide > obstacle.TopSide + obstacle.height (obstacle.Bottom)
     // player top side is below obstacle's bottom side
-    if (player.y > obstacle.y + obstacle.height) {
+    if (player.y +10 > obstacle.y + obstacle.height) {
       return false;
     }
 
     //  obstacle.topSide > player.topSide + player.height (player.bottomSide)
     //  obstacle top side is below the player's bottom side
-    if (obstacle.y > player.y + player.height) {
+    if (obstacle.y +10 > player.y + player.height) {
       return false;
     }
     return true;
