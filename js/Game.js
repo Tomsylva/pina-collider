@@ -119,7 +119,7 @@ class Game {
     // POWERUPS
     // For notes, see SHARK LOGIC above
 
-    if (frameCount % Math.floor(random(2000)) === 0) {
+    if (frameCount % Math.floor(random(1500)) === 0) {
       this.cocktails.push(new Cocktail());
     }
     this.cocktails.forEach((cocktail, index) => {
@@ -130,11 +130,12 @@ class Game {
 
       // Removes drink from screen when collision happens and increments drinks by 1
       if (this.collisionCheck(this.player, cocktail)) {
+        this.score += 10;
         this.cocktailHour();
       }
     });
 
-    if (frameCount % Math.floor(random(2000)) === 0) {
+    if (frameCount % Math.floor(random(1500)) === 0) {
       this.brewskis.push(new Beer());
     }
     this.brewskis.forEach((beer, index) => {
@@ -143,6 +144,7 @@ class Game {
         this.brewskis.splice(index, 1);
       }
       if (this.collisionCheck(this.player, beer)) {
+        this.score += 10;
         this.drinkUp();
       }
     });
@@ -172,7 +174,6 @@ class Game {
   drinkUp() {
     this.brewskis.splice(this.index, 1);
     this.drinks += 1;
-    this.score += 10;
     if (this.drinks >= 3) {
       this.drunk = true;
       setTimeout(() => {
@@ -185,7 +186,6 @@ class Game {
   cocktailHour() {
     this.cocktails.splice(this.index, 1);
     this.drinks += 1;
-    this.score += 10;
     if (this.drinks >= 3) {
       this.drunk = true;
       setTimeout(() => {
