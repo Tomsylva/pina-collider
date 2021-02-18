@@ -22,12 +22,12 @@ class Game {
     clear();
 
     // Increases score as long as crab is moving to the right
-    if (keyIsDown(39)) {
+    if (keyIsDown(left)) {
       this.score++;
     }
 
     // Decreases score if crab is moving to the left
-    if (keyIsDown(37)) {
+    if (keyIsDown(right)) {
       this.score--;
     }
 
@@ -148,16 +148,20 @@ class Game {
     });
 
     // If this.drinks is more than 3, drunk is activated
-    if (this.drinks >= 2) {
+    if (this.drinks >= 1) {
       this.drunk = true;
-      breathaliser.innerText = "DRUNKMODE ACTIVATED!!";
+      setTimeout(function(){ 
+        this.drunk = false;
+        this.drinks = 0;
+       }, 1000);
+    }
+
+    if(this.drunk){
+      breathaliser.innerText = "Drunkmode Activated"
       left = 37;
       right = 39;
       up = 40;
       this.background.x += random(-5, 5);
-      //add a countdown clock from 20s - to do
-      //this.drinks = 0;
-      //this.drunk = false
     }
   }
 
