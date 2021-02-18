@@ -2,6 +2,8 @@
 // CREATE BUTTON TO PLAY AGAIN
 // RESET GAME
 
+const breathaliser = document.querySelector("h2 span");
+
 class Game {
   constructor() {
     this.background = new Background();
@@ -14,6 +16,7 @@ class Game {
     this.score = 0;
     this.drinks = 0;
     this.drunk = false;
+    this.secondsToSober = 10;
   }
 
   setup() {}
@@ -31,14 +34,14 @@ class Game {
       this.score--;
     }
 
+    const timeToSober = document.querySelector("h3 span")
+
+    const breathaliser = document.querySelector("h2 span");
+
     // Selects the score in the DOM
     const currentScore = document.querySelector("h1 span");
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
-    currentScore.innerText = (Math.floor(this.score / 10) + (this.drinks * 10));
-
-    // Increases count for every drink accumulated and displayed on screen.
-    const breathaliser = document.querySelector("h2 span");
-    breathaliser.innerText = this.drinks;
+    currentScore.innerText = Math.floor(this.score / 10);
 
     this.background.draw();
     this.bar.draw();
@@ -51,7 +54,7 @@ class Game {
       this.sharks.push(new Shark());
     }
 
-    if (this.score < -50){
+    if (this.score < -50) {
       this.sharks.push(new Shark());
     }
 
@@ -65,7 +68,6 @@ class Game {
       }
 
       if (this.collisionCheck(this.player, shark)) {
-        
         // Stops the loop and game
         noLoop();
 
@@ -117,7 +119,7 @@ class Game {
     // POWERUPS
     // For notes, see SHARK LOGIC above
 
-    if (frameCount % Math.floor(random(3000)) === 0) {
+    if (frameCount % Math.floor(random(2000)) === 0) {
       this.cocktails.push(new Cocktail());
     }
     this.cocktails.forEach((cocktail, index) => {
@@ -128,12 +130,11 @@ class Game {
 
       // Removes drink from screen when collision happens and increments drinks by 1
       if (this.collisionCheck(this.player, cocktail)) {
-        this.cocktails.splice(index, 1);
-        this.drinks += 1;
+        this.cocktailHour();
       }
     });
 
-    if (frameCount % Math.floor(random(3000)) === 0) {
+    if (frameCount % Math.floor(random(2000)) === 0) {
       this.brewskis.push(new Beer());
     }
     this.brewskis.forEach((beer, index) => {
@@ -142,34 +143,50 @@ class Game {
         this.brewskis.splice(index, 1);
       }
       if (this.collisionCheck(this.player, beer)) {
-        this.brewskis.splice(index, 1);
-        this.drinks += 1;
+        this.drinkUp();
       }
     });
 
-    // If this.drinks is more than 3, drunk is activated
-    if (this.drinks >= 1) {
-      this.drunk = true;
-      setTimeout(function(){ 
-        this.drunk = false;
-        this.drinks = 0;
-       }, 1000);
-    }
-
-    if(this.drunk){
-      breathaliser.innerText = "Drunkmode Activated"
+    if (this.drunk) {
+      breathaliser.innerText = "Drunkmode Activated!";
+      timeToSober.innerText = this.secondsToSober;
       left = 37;
       right = 39;
       up = 40;
       this.background.x += random(-5, 5);
+    } else {
+      left = 39;
+      right = 37;
+      up = 38;
+      breathaliser.innerText = this.drinks;
     }
   }
 
-  // countdown() {
-  //   this.currentTime
-  // https://thecodingtrain.com/CodingChallenges/066-timer.html
+  drinkUp() {
+    this.brewskis.splice(this.index, 1);
+    this.drinks += 1;
+    this.score += 10;
+    if (this.drinks >= 3) {
+      this.drunk = true;
+      setTimeout(() => {
+        this.drunk = false;
+        this.drinks = 0;
+      }, 10000);
+    }
+  }
 
-  // }
+  cocktailHour() {
+    this.cocktails.splice(this.index, 1);
+    this.drinks += 1;
+    this.score += 10;
+    if (this.drinks >= 3) {
+      this.drunk = true;
+      setTimeout(() => {
+        this.drunk = false;
+        this.drinks = 0;
+      }, 10000);
+    }
+  }
 
   collisionCheck(player, obstacle) {
     //   player.left + player.width (players.rightSide)
@@ -186,13 +203,13 @@ class Game {
 
     // player.topSide > obstacle.TopSide + obstacle.height (obstacle.Bottom)
     // player top side is below obstacle's bottom side
-    if (player.y +10 > obstacle.y + obstacle.height) {
+    if (player.y + 10 > obstacle.y + obstacle.height) {
       return false;
     }
 
     //  obstacle.topSide > player.topSide + player.height (player.bottomSide)
     //  obstacle top side is below the player's bottom side
-    if (obstacle.y +10 > player.y + player.height) {
+    if (obstacle.y + 10 > player.y + player.height) {
       return false;
     }
     return true;
