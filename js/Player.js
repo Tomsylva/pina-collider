@@ -11,7 +11,7 @@ class Player {
 
   // when up key is pressed, jump is called
   keyPressed() {
-    if (keyCode === 38) {
+    if (keyCode === up) {
       this.jump();
     }
   }

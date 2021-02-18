@@ -13,3 +13,4 @@ let barImage;
 
 let left = 39;
 let right = 37;
+let up = 38;

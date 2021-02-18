@@ -148,16 +148,16 @@ class Game {
     });
 
     // If this.drinks is more than 3, drunk is activated
-    if (this.drinks >= 3) {
+    if (this.drinks >= 2) {
       this.drunk = true;
       breathaliser.innerText = "DRUNKMODE ACTIVATED!!";
-      // background.drunkMode();
       left = 37;
       right = 39;
+      up = 40;
+      this.background.x += random(-5, 5);
       //add a countdown clock from 20s - to do
       //this.drinks = 0;
       //this.drunk = false
-      // ** LOGIC is already written in Background, just need to imnplement when this.drunk = true
     }
   }
 
