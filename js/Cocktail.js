@@ -9,11 +9,11 @@ class Cocktail {
   draw() {
     // This ensure the drinks stay in the same "y" position, even when the crab is moving
     // This gets used a lot - maybe make into a single function and call it? 
-    if (keyIsDown(39)) {
+    if (keyIsDown(left)) {
       this.x -= SPEED;
     }
 
-    if (keyIsDown(37)) {
+    if (keyIsDown(right)) {
       this.x += SPEED;
     }
 

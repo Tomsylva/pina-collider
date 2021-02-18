@@ -10,3 +10,6 @@ let sharkImage;
 let cocktailImage;
 let beerImage;
 let barImage;
+
+let left = 39;
+let right = 37;

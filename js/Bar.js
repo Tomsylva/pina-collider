@@ -12,10 +12,10 @@ class Bar {
 
         // This makes the image of the bar move offscreen when the crab runs forwards
         // This gets used a lot - maybe make into a single function and call it? 
-        if(keyIsDown(39)){
+        if(keyIsDown(left)){
             this.x -= SPEED;
         }
-        if(keyIsDown(37)){
+        if(keyIsDown(right)){
             this.x += SPEED;
         }
     }
