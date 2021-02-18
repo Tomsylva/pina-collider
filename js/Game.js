@@ -150,6 +150,7 @@ class Game {
     if (this.drunk) {
       breathaliser.innerText = "Drunkmode Activated!";
       timeToSober.innerText = this.secondsToSober;
+      this.countdown();
       left = 37;
       right = 39;
       up = 40;
@@ -162,6 +163,12 @@ class Game {
     }
   }
 
+  countdown(){
+    setInterval(() => { 
+      this.secondsToSober -= 1;
+     }, 1000);
+  }
+
   drinkUp() {
     this.brewskis.splice(this.index, 1);
     this.drinks += 1;
@@ -171,7 +178,7 @@ class Game {
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;
-      }, 10000);
+      }, this.secondsToSober * 1000);
     }
   }
 
@@ -184,7 +191,7 @@ class Game {
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;
-      }, 10000);
+      }, this.secondsToSober * 1000);
     }
   }
 
