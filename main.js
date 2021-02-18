@@ -1,4 +1,5 @@
 const game = new Game();
+const newGame = new Game();
 
 function preload() {
   bgImage = loadImage("./assets/background2.jpg");
@@ -24,6 +25,6 @@ function keyPressed() {
 
 // This function needs fixing but is called every time the restart button is pushed
 function restartGame() {
-  remove();
-  game.draw();
+  // remove();
+  newGame.draw();
 }

@@ -5,30 +5,29 @@ class Background {
         this.y = 0;
         this.width = WIDTH;
         this.height = HEIGHT;
+        this.left = 39;
+        this.right = 37;
     }
 
-    drunkMode(){
+    drunkMode = () => {
 
         // Should make crab move a little on it's own
-        this.x += (Math.floor(random(-2,2)));
-
+        // this.x += (Math.floor(random(-2,2)));
+        console.log("Heyooo")
         // Reverse key functions for when drunkMode is activated
-        if(keyIsDown(39)){
-            this.x += SPEED;
-        }
-        if(keyIsDown(37)){
-            this.x -= SPEED;
-        }
+        // this.left = 37;
+        // this.right = 39;
     }
+    
 
     draw(){
         // Regular key functions when drunkMode is not activated
         // This gets used a lot - maybe make into a single function and call it? 
-        if(keyIsDown(39)){
+        if(keyIsDown(this.left)){
             this.x -= SPEED;
         }
 
-        if(keyIsDown(37)){
+        if(keyIsDown(this.right)){
             this.x += SPEED;
         }
         

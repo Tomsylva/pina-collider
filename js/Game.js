@@ -148,16 +148,24 @@ class Game {
     });
 
     // If this.drinks is more than 3, drunk is activated
-    if (this.drinks >= 3) {
+    if (this.drinks >= 1) {
       this.drunk = true;
-      breathaliser.innerText = "DRUNKMDE ACTIMATED";
-      //background.drunkMode();
+      breathaliser.innerText = "DRUNKMODE ACTIVATED!!";
+      // background.drunkMode();
+      this.background.left = 37;
+      this.background.right = 39;
       //add a countdown clock from 20s - to do
       //this.drinks = 0;
       //this.drunk = false
       // ** LOGIC is already written in Background, just need to imnplement when this.drunk = true
     }
   }
+
+  // countdown() {
+  //   this.currentTime
+  // https://thecodingtrain.com/CodingChallenges/066-timer.html
+
+  // }
 
   collisionCheck(player, obstacle) {
     //   player.left + player.width (players.rightSide)
