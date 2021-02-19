@@ -12,6 +12,7 @@ class Game {
     this.coconuts = [];
     this.cocktails = [];
     this.brewskis = [];
+    this.ammo = [];
     this.player = new Player();
     this.score = 0;
     this.drinksConsumed = 0;
@@ -47,6 +48,14 @@ class Game {
     this.background.draw();
     this.bar.draw();
     this.player.draw();
+
+    // if (keyPressed(32)){
+    //   this.ammo.push(new Ammo());
+    //   this.ammo.forEach((bottle, index) => {
+    //     bottle.draw();
+    //     bottle.keyPressed();
+    //   })
+    // }
 
     // SHARK LOGIC
 
@@ -156,7 +165,7 @@ class Game {
       left = 37;
       right = 39;
       up = 40;
-      this.background.x += random(-5, 5);
+      this.background.x += random(-10, 10);
     } else {
       left = 39;
       right = 37;

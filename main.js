@@ -21,6 +21,7 @@ function setup() {
 
 function keyPressed() {
   game.player.keyPressed();
+  // game.bottle.keyPressed();
 }
 
 // This function needs fixing but is called every time the restart button is pushed
