@@ -9,6 +9,7 @@ function preload() {
   beerImage = loadImage("./assets/beer.png");
   cocktailImage = loadImage("./assets/cocktail.png");
   barImage = loadImage("./assets/bar.png");
+  ammoImage = loadImage("./assets/beer2.png")
 }
 
 function draw() {

@@ -8,7 +8,7 @@ class Ammo {
     }
 
     draw() {
-        image (beerImage, this.x, this.y, this.width, this.height);
+        image (ammoImage, this.x, this.y, this.width, this.height);
     }
 
     keyPressed() {
