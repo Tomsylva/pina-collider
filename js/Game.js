@@ -14,6 +14,7 @@ class Game {
     this.brewskis = [];
     this.player = new Player();
     this.score = 0;
+    this.drinksConsumed = 0;
     this.drinks = 0;
     this.drunk = false;
     this.secondsToSober = 5;
@@ -41,7 +42,7 @@ class Game {
     // Selects the score in the DOM
     const currentScore = document.querySelector("h1 span");
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
-    currentScore.innerText = Math.floor(this.score / 10);
+    currentScore.innerText = Math.floor(this.score / 10) + (this.drinksConsumed * 10);
 
     this.background.draw();
     this.bar.draw();
@@ -130,7 +131,7 @@ class Game {
 
       // Removes drink from screen when collision happens and increments drinks by 1
       if (this.collisionCheck(this.player, cocktail)) {
-        this.score += 10;
+        this.drinksConsumed += 1;
         this.cocktailHour();
       }
     });
@@ -144,7 +145,7 @@ class Game {
         this.brewskis.splice(index, 1);
       }
       if (this.collisionCheck(this.player, beer)) {
-        this.score += 10;
+        this.drinksConsumed += 1;
         this.drinkUp();
       }
     });
