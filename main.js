@@ -28,5 +28,5 @@ function keyPressed() {
 // This function needs fixing but is called every time the restart button is pushed
 function restartGame() {
   // remove();
-  newGame.draw();
+  this.game.redraw();
 }
