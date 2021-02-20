@@ -5,6 +5,7 @@ const SPEED = 8;
 
 
 let constantY = 330;
+let topScore = 0;
 
 let bgImgage;
 let crabImage;

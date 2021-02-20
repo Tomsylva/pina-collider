@@ -40,14 +40,24 @@ class Game {
       this.missile.draw();
     }
 
-    const timeToSober = document.querySelector("h3 span")
+    // Selects the seconds until sober in the DOM
+    const timeToSober = document.getElementById("timer")
 
-    const breathaliser = document.querySelector("h2 span");
+    // Selects breathaliser score in the DOM
+    const breathaliser = document.getElementById("breath");
 
     // Selects the score in the DOM
-    const currentScore = document.querySelector("h1 span");
+    const currentScore = document.getElementById("current-score");
+
+    // Selects the top score in the DOM
+    const highScore = document.getElementById("top-score");
+
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
     currentScore.innerText = Math.floor(this.score / 10) + (this.bonus * 10);
+
+    if(((this.score / 10) + (this.bonus * 10)) > topScore){
+      highScore.innerText = Math.floor((this.score / 10) + (this.bonus * 10));
+    }
 
     this.background.draw();
     this.bar.draw();
@@ -186,6 +196,9 @@ class Game {
   }
 
   restartGame(){
+    if(((this.score / 10) + (this.bonus * 10)) > topScore){
+      topScore = ((this.score / 10) + (this.bonus * 10));
+    }
     this.cocktails = [];
     this.coconuts = [];
     this.sharks = [];
