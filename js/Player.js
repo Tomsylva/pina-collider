@@ -42,7 +42,7 @@ class Player {
       this.jumpCount = 0;
     }
 
-    image(crabImage, this.x, this.y, this.width, this.height);
+    image(this.fire === false? crabImage: emptyHands, this.x, this.y, this.width, this.height);
     
     if (this.fire){
       this.missile.draw();

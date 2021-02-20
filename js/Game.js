@@ -37,8 +37,8 @@ class Game {
     }
 
     if(this.player.fire){
+      this.missile.y = this.player.y;
       this.missile.draw();
-      this.missile.thrown = true;
     }
 
     const timeToSober = document.querySelector("h3 span")
@@ -63,6 +63,7 @@ class Game {
 
     if (this.score < -50) {
       this.sharks.push(new Shark());
+      this.bonus = -1000;
     }
 
     this.sharks.forEach((shark, index) => {
@@ -243,7 +244,7 @@ class Game {
 
     //  obstacle's left and obstacle width (obstacle.rightSide)
     // if obstacle's right side is to the left of player's left
-    if (obstacle.x + obstacle.width < player.x - 10) {
+    if (obstacle.x + obstacle.width < player.x + 10) {
       return false;
     }
 

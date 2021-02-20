@@ -6,12 +6,9 @@ class Ammo {
     this.y = 320;
     this.velocity = 0;
     this.angle = 0;
-    this.thrown = true;
   }
 
   draw() {
-    // translate(this.x + (this.width/2), this.y + (this.height/2))
-    // rotate(this.angle ++);
     image(ammoImage, this.x, this.y, this.width, this.height);
     this.x += 15;
     this.y -= 12;
