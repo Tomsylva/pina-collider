@@ -41,16 +41,16 @@ class Game {
     }
 
     // Selects the seconds until sober in the DOM
-    const timeToSober = document.getElementById("timer")
+    const timeToSober = document.querySelector("h2 .timer")
 
     // Selects breathaliser score in the DOM
-    const breathaliser = document.getElementById("breath");
+    const breathaliser = document.querySelector("h2 span");
 
     // Selects the score in the DOM
-    const currentScore = document.getElementById("current-score");
+    const currentScore = document.querySelector("h1 span");
 
     // Selects the top score in the DOM
-    const highScore = document.getElementById("top-score");
+    const highScore = document.querySelector("h1 .top-score");
 
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
     currentScore.innerText = Math.floor(this.score / 10) + (this.bonus * 10);
