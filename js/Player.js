@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this.x = 80;
-    this.y = 330;
+    this.y = constantY;
     this.width = 80;
     this.height = 60;
     this.floor = 330;
@@ -27,7 +27,7 @@ class Player {
       return;
     }
     this.jumpCount++;
-    this.y -= 10;
+    constantY -= 10;
     this.velocity -= 8;
   }
 

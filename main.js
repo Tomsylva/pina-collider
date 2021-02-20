@@ -19,7 +19,6 @@ function draw() {
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
-  angleMode(DEGREES);
 }
 
 function keyPressed() {
