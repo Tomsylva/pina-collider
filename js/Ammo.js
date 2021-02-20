@@ -8,13 +8,12 @@ class Ammo {
     }
 
     draw() {
-        image (ammoImage, this.x, this.y, this.width, this.height);
+        image(ammoImage, this.x, this.y, this.width, this.height);
     }
 
-    keyPressed() {
-        this.draw();
-        if (keyCode === 32) {
-        //   this.jump();
-        }
-      }
+    // keyPressed() {
+    //     if (keyCode === 32) {
+    //     this.draw();
+    //     }
+    //   }
 }

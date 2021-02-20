@@ -12,7 +12,7 @@ class Game {
     this.coconuts = [];
     this.cocktails = [];
     this.brewskis = [];
-    this.ammo = [];
+    // this.missle = new Ammo();
     this.player = new Player();
     this.score = 0;
     this.drinksConsumed = 0;
@@ -36,6 +36,10 @@ class Game {
       this.score--;
     }
 
+    // if(keyIsDown(32)){
+    //   this.throwBeer();
+    // }
+
     const timeToSober = document.querySelector("h3 span")
 
     const breathaliser = document.querySelector("h2 span");
@@ -48,14 +52,6 @@ class Game {
     this.background.draw();
     this.bar.draw();
     this.player.draw();
-
-    // if (keyPressed(32)){
-    //   this.ammo.push(new Ammo());
-    //   this.ammo.forEach((bottle, index) => {
-    //     bottle.draw();
-    //     bottle.keyPressed();
-    //   })
-    // }
 
     // SHARK LOGIC
 
@@ -87,7 +83,7 @@ class Game {
         document.body.appendChild(button);
         button.onclick = () => {
           //ADD REFRESH FUNCTION IN MAIN.JS- to do
-          restartGame();
+          this.restartGame();
 
           // Removes button from the browser
           button.parentNode.removeChild(button);
@@ -120,7 +116,7 @@ class Game {
         document.body.appendChild(button);
         button.onclick = () => {
           //ADD REFRESH FUNCTION
-          restartGame();
+          this.restartGame();
           button.parentNode.removeChild(button);
         };
       }
@@ -179,33 +175,55 @@ class Game {
     setInterval(() => { 
       this.secondsToSober -= 1;
      }, 1000);
+    
   }
+
+  restartGame(){
+    this.cocktails = [];
+    this.coconuts = [];
+    this.sharks = [];
+    this.brewskis = [];
+    this.background = new Background();
+    this.player = new Player();
+    this.score = 0;
+    this.drinksConsumed = 0;
+    this.drinks = 0;
+    this.drunk = false;
+    this.secondsToSober = 5;
+    this.bar = new Bar();
+    this.draw();
+    loop();
+  }
+
+  // throwBeer(){
+  //   this.missle.draw();
+  // }
 
   drinkUp() {
     this.brewskis.splice(this.index, 1);
     this.drinks += 1;
-    if (this.drinks >= 3) {
+    if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
       this.countdown();
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;
-      }, this.secondsToSober * 1000);
+      }, 5000);
     }
   }
 
   cocktailHour() {
     this.cocktails.splice(this.index, 1);
     this.drinks += 1;
-    if (this.drinks >= 3) {
+    if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
       this.countdown();
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;
-      }, this.secondsToSober * 1000);
+      }, 5000);
     }
   }
 
@@ -234,9 +252,5 @@ class Game {
       return false;
     }
     return true;
-  }
-
-  keyIsPressed() {
-    this.player.keyIsPressed();
   }
 }
