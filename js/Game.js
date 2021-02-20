@@ -25,6 +25,11 @@ class Game {
 
   draw() {
     clear();
+    // Selects the start button from the DOM
+    // const startButton = document.querySelector(".start-button");
+    // startButton.onclick = () => {
+    //   this.restartGame();
+    // };
 
     // Increases score as long as crab is moving to the right
     if (keyIsDown(left)) {
@@ -36,12 +41,12 @@ class Game {
       this.score--;
     }
 
-    if(this.player.fire){
+    if (this.player.fire) {
       this.missile.draw();
     }
 
     // Selects the seconds until sober in the DOM
-    const timeToSober = document.querySelector("h2 .timer")
+    const timeToSober = document.querySelector("h2 .timer");
 
     // Selects breathaliser score in the DOM
     const breathaliser = document.querySelector("h2 span");
@@ -53,10 +58,10 @@ class Game {
     const highScore = document.querySelector("h1 .top-score");
 
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
-    currentScore.innerText = Math.floor(this.score / 10) + (this.bonus * 10);
+    currentScore.innerText = Math.floor(this.score / 10) + this.bonus * 10;
 
-    if(((this.score / 10) + (this.bonus * 10)) > topScore){
-      highScore.innerText = Math.floor((this.score / 10) + (this.bonus * 10));
+    if (this.score / 10 + this.bonus * 10 > topScore) {
+      highScore.innerText = Math.floor(this.score / 10 + this.bonus * 10);
     }
 
     this.background.draw();
@@ -84,10 +89,12 @@ class Game {
         this.sharks.splice(index, 1);
       }
 
-      if(this.collisionCheck(this.missile, shark) && this.player.fire === true){
+      if (
+        this.collisionCheck(this.missile, shark) &&
+        this.player.fire === true
+      ) {
         this.sharks.splice(index, 1);
         this.bonus += 15;
-        
       }
 
       if (this.collisionCheck(this.player, shark)) {
@@ -99,7 +106,7 @@ class Game {
         button.innerText = "Play again?";
         document.body.appendChild(button);
         button.onclick = () => {
-          //ADD REFRESH FUNCTION IN MAIN.JS- to do
+          //ADD REFRESH FUNCTION IN MAIN.JS
           this.restartGame();
 
           // Removes button from the browser
@@ -188,16 +195,15 @@ class Game {
     }
   }
 
-  countdown(){
-    setInterval(() => { 
+  countdown() {
+    setInterval(() => {
       this.secondsToSober -= 1;
-     }, 1000);
-    
+    }, 1000);
   }
 
-  restartGame(){
-    if(((this.score / 10) + (this.bonus * 10)) > topScore){
-      topScore = ((this.score / 10) + (this.bonus * 10));
+  restartGame() {
+    if (this.score / 10 + this.bonus * 10 > topScore) {
+      topScore = this.score / 10 + this.bonus * 10;
     }
     this.cocktails = [];
     this.coconuts = [];
