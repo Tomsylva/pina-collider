@@ -37,7 +37,6 @@ class Game {
     }
 
     if(this.player.fire){
-      this.missile.y = this.player.y;
       this.missile.draw();
     }
 
@@ -202,10 +201,6 @@ class Game {
     this.draw();
     loop();
   }
-
-  // throwBeer(){
-  //   this.missle.draw();
-  // }
 
   drinkUp() {
     this.brewskis.splice(this.index, 1);
