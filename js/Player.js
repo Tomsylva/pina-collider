@@ -7,12 +7,17 @@ class Player {
     this.floor = 330;
     this.velocity = 0;
     this.jumpCount = 0;
+    this.fire = false;
+    this.missile = new Ammo();
   }
 
   // when up key is pressed, jump is called
   keyPressed() {
     if (keyCode === up) {
       this.jump();
+    }
+    if (keyCode === 32){
+      this.fire = true;
     }
   }
 
@@ -38,5 +43,11 @@ class Player {
     }
 
     image(crabImage, this.x, this.y, this.width, this.height);
+    
+    if (this.fire){
+      this.missile.draw();
+    }
   }
 }
+
+

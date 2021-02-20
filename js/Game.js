@@ -12,10 +12,10 @@ class Game {
     this.coconuts = [];
     this.cocktails = [];
     this.brewskis = [];
-    // this.missle = new Ammo();
+    this.missile = new Ammo();
     this.player = new Player();
     this.score = 0;
-    this.drinksConsumed = 0;
+    this.bonus = 0;
     this.drinks = 0;
     this.drunk = false;
     this.secondsToSober = 5;
@@ -36,9 +36,10 @@ class Game {
       this.score--;
     }
 
-    // if(keyIsDown(32)){
-    //   this.throwBeer();
-    // }
+    if(this.player.fire){
+      this.missile.draw();
+      this.missile.thrown = true;
+    }
 
     const timeToSober = document.querySelector("h3 span")
 
@@ -47,7 +48,7 @@ class Game {
     // Selects the score in the DOM
     const currentScore = document.querySelector("h1 span");
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
-    currentScore.innerText = Math.floor(this.score / 10) + (this.drinksConsumed * 10);
+    currentScore.innerText = Math.floor(this.score / 10) + (this.bonus * 10);
 
     this.background.draw();
     this.bar.draw();
@@ -71,6 +72,12 @@ class Game {
       // Removes hidden sharks from array
       if (shark.x + shark.width <= 0) {
         this.sharks.splice(index, 1);
+      }
+
+      if(this.collisionCheck(this.missile, shark) && this.player.fire === true){
+        this.sharks.splice(index, 1);
+        this.bonus += 15;
+        
       }
 
       if (this.collisionCheck(this.player, shark)) {
@@ -136,7 +143,7 @@ class Game {
 
       // Removes drink from screen when collision happens and increments drinks by 1
       if (this.collisionCheck(this.player, cocktail)) {
-        this.drinksConsumed += 1;
+        this.bonus += 1;
         this.cocktailHour();
       }
     });
@@ -150,7 +157,7 @@ class Game {
         this.brewskis.splice(index, 1);
       }
       if (this.collisionCheck(this.player, beer)) {
-        this.drinksConsumed += 1;
+        this.bonus += 1;
         this.drinkUp();
       }
     });
@@ -186,7 +193,7 @@ class Game {
     this.background = new Background();
     this.player = new Player();
     this.score = 0;
-    this.drinksConsumed = 0;
+    this.bonus = 0;
     this.drinks = 0;
     this.drunk = false;
     this.secondsToSober = 5;

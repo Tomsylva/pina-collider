@@ -5,6 +5,7 @@ const SPEED = 8;
 
 let bgImgage;
 let crabImage;
+let emptyHands;
 let coconutImage;
 let sharkImage;
 let cocktailImage;

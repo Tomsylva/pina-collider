@@ -10,6 +10,7 @@ function preload() {
   cocktailImage = loadImage("./assets/cocktail.png");
   barImage = loadImage("./assets/bar.png");
   ammoImage = loadImage("./assets/beer2.png")
+  emptyHands = loadImage("./assets/crab2.png")
 }
 
 function draw() {
@@ -18,6 +19,7 @@ function draw() {
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
+  angleMode(DEGREES);
 }
 
 function keyPressed() {
