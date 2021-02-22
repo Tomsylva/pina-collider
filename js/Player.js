@@ -16,12 +16,12 @@ class Player {
     if (keyCode === up) {
       this.jump();
     }
-    if (keyCode === 32){
+    if (keyCode === 32) {
       this.fire = true;
     }
   }
 
-// makes crab jump
+  // makes crab jump
   jump() {
     if (this.jumpCount === 2) {
       return;
@@ -42,12 +42,16 @@ class Player {
       this.jumpCount = 0;
     }
 
-    image(this.fire === false? crabImage: emptyHands, this.x, this.y, this.width, this.height);
-    
-    if (this.fire){
+    image(
+      this.fire === false ? crabImage : emptyHands,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+
+    if (this.fire) {
       this.missile.draw();
     }
   }
 }
-
-
