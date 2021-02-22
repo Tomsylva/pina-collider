@@ -205,6 +205,7 @@ class Game {
     if (this.score / 10 + this.bonus * 10 > topScore) {
       topScore = this.score / 10 + this.bonus * 10;
     }
+    this.missile = new Ammo();
     this.player.fire = false;
     this.cocktails = [];
     this.coconuts = [];
