@@ -23,5 +23,4 @@ function setup() {
 
 function keyPressed() {
   game.player.keyPressed();
-  // game.bottle.keyPressed();
 }
