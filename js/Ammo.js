@@ -1,9 +1,9 @@
 class Ammo {
-  constructor() {
+  constructor(playerYPosition = 330) {
     this.x = 145;
     this.width = 25;
     this.height = 60;
-    this.y = 330;
+    this.y = playerYPosition;
     this.velocity = 0;
     this.angle = 0; //FOR ROTATION - delete if not used
   }

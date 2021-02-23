@@ -1,7 +1,3 @@
-// SAVE SCORE
-// CREATE BUTTON TO PLAY AGAIN
-// RESET GAME
-
 const breathaliser = document.querySelector("h2 span");
 
 class Game {
@@ -25,11 +21,6 @@ class Game {
 
   draw() {
     clear();
-    // Selects the start button from the DOM
-    // const startButton = document.querySelector(".start-button");
-    // startButton.onclick = () => {
-    //   this.restartGame();
-    // };
 
     // Increases score as long as crab is moving to the right
     if (keyIsDown(left)) {
@@ -162,6 +153,7 @@ class Game {
       if (this.collisionCheck(this.player, cocktail)) {
         this.bonus += 1;
         this.cocktailHour();
+        // cocktailSound.play();
       }
     });
 
