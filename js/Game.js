@@ -206,13 +206,13 @@ class Game {
       topScore = this.score / 10 + this.bonus * 10;
     }
     this.missile = new Ammo();
+    this.player = new Player();
     this.player.fire = false;
     this.cocktails = [];
     this.coconuts = [];
     this.sharks = [];
     this.brewskis = [];
     this.background = new Background();
-    this.player = new Player();
     this.score = 0;
     this.bonus = 0;
     this.drinks = 0;
