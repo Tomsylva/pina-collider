@@ -37,16 +37,16 @@ class Game {
     }
 
     // Selects the seconds until sober in the DOM
-    const timeToSober = document.querySelector("h2 .timer");
+    // const timeToSober = document.querySelector("h3 .timer");
 
     // Selects breathaliser score in the DOM
-    const breathaliser = document.querySelector("h2 span");
+    const breathaliser = document.querySelector("h3 span");
 
     // Selects the score in the DOM
-    const currentScore = document.querySelector("h1 span");
+    const currentScore = document.querySelector("h2 span");
 
     // Selects the top score in the DOM
-    const highScore = document.querySelector("h1 .top-score");
+    const highScore = document.querySelector("h2 .top-score");
 
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
     currentScore.innerText = Math.floor(this.score / 10) + this.bonus * 10;
@@ -86,6 +86,12 @@ class Game {
       ) {
         this.sharks.splice(index, 1);
         this.bonus += 15;
+        const message = document.createElement("h3");
+        message.innerText = "Bullseye! +150 points";;
+        document.body.appendChild(message);
+        setTimeout(function(){
+          message.parentNode.removeChild(message);
+        },1000);
       }
 
       if (this.collisionCheck(this.player, shark)) {
@@ -93,8 +99,11 @@ class Game {
         noLoop();
 
         // Creates a play again button
+        const message = document.createElement("h3");
+        message.innerText = "Shark Attack!";
         const button = document.createElement("button");
         button.innerText = "Play again?";
+        document.body.appendChild(message)
         document.body.appendChild(button);
         button.onclick = () => {
           //ADD REFRESH FUNCTION IN MAIN.JS
@@ -102,6 +111,7 @@ class Game {
 
           // Removes button from the browser
           button.parentNode.removeChild(button);
+          message.parentNode.removeChild(message);
         };
       }
     });
@@ -126,13 +136,17 @@ class Game {
 
       if (this.collisionCheck(this.player, coconut)) {
         noLoop();
+        const message = document.createElement("h3");
+        message.innerText = "Knockout!";
         const button = document.createElement("button");
         button.innerText = "Play again?";
+        document.body.appendChild(message);
         document.body.appendChild(button);
         button.onclick = () => {
           //ADD REFRESH FUNCTION
           this.restartGame();
           button.parentNode.removeChild(button);
+          message.parentNode.removeChild(message);
         };
       }
     });
@@ -154,6 +168,12 @@ class Game {
         this.bonus += 1;
         this.cocktailHour();
         // cocktailSound.play();
+        const message = document.createElement("h3");
+        message.innerText = "Cocktail Time! +10 points";;
+        document.body.appendChild(message);
+        setTimeout(function(){
+          message.parentNode.removeChild(message);
+        },1000);
       }
     });
 
@@ -168,12 +188,18 @@ class Game {
       if (this.collisionCheck(this.player, beer)) {
         this.bonus += 1;
         this.drinkUp();
+        const message = document.createElement("h3");
+        message.innerText = "Cheers! +10 points";;
+        document.body.appendChild(message);
+        setTimeout(function(){
+          message.parentNode.removeChild(message);
+        },1000);
       }
     });
 
     if (this.drunk) {
-      breathaliser.innerText = "Drunkmode Activated!";
-      timeToSober.innerText = this.secondsToSober;
+      breathaliser.innerText = "Too much to drive!";
+      // timeToSober.innerText = this.secondsToSober;
       left = 37;
       right = 39;
       up = 40;
@@ -183,15 +209,15 @@ class Game {
       right = 37;
       up = 38;
       breathaliser.innerText = this.drinks;
-      timeToSober.innerText = "Sober!";
+      // timeToSober.innerText = "Sober!";
     }
   }
 
-  countdown() {
-    setInterval(() => {
-      this.secondsToSober -= 1;
-    }, 1000);
-  }
+  // countdown() {
+  //   setInterval(() => {
+  //     this.secondsToSober -= 1;
+  //   }, 1000);
+  // }
 
   restartGame() {
     if (this.score / 10 + this.bonus * 10 > topScore) {
@@ -221,7 +247,7 @@ class Game {
     if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
-      this.countdown();
+      // this.countdown();
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;
@@ -235,7 +261,7 @@ class Game {
     if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
-      this.countdown();
+      // this.countdown();
       setTimeout(() => {
         this.drunk = false;
         this.drinks = 0;

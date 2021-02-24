@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Piña Collider</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
-    <script src=“https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/addons/p5.sound.min.js”></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Stick&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <script src="./js/constants.js"></script>
@@ -21,23 +27,23 @@
     <script src="./js/Game.js"></script>
     <script src="./main.js"></script>
 
-    <h1>Your score: <span class="current-score"></span> || Top Score: <span class="top-score"></span></h1>
-    <h2>Breathaliser: <span class="breath"></span> || Seconds until sobriety: <span class="timer"></span></h2>
+    <h1>¡Piña Collider!</h1>
+    
     <p>
-      Use your left and right arrow keys to move tipsy Tiffany and the up key to
-      jump.
+      Use arrow keys to move Tipsy Tiff left and right and up to jump. The space bar throws your empty beer away
     </p>
     <p>
-      Watch out for falling coconuts and sharks.
-    </p>
-    <p>
-      Tiff is an alcoholic. Additional drinks get you more points, but be
-      careful not to drink too much.
-    </p>
-    <p>
-      You have one bottle to defend yourself from sharks. Throw it with the space bar.
+      Increase your score by drinking more booze and hitting sharks with your bottle
     </p>
 
-    <!-- <button class="start-button">Start Game</button> -->
+    <h2>
+      Your score:<span class="current-score"></span> || Top Score:
+      <span class="top-score"></span>
+    </h2>
+    <h3>
+      Breathaliser: <span class="breath"></span> 
+      <!-- || Seconds until sobriety:
+      <span class="timer"></span> -->
+    </h3>
   </body>
 </html>
