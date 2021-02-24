@@ -15,7 +15,7 @@ h1 {
     color: rgb(44, 87, 42);
 }
 
-h2, h3, button {
+h2, h3, h4, button {
     font-family: 'Amatic SC', cursive;
     color: rgb(82, 82, 82);
 }
@@ -28,6 +28,10 @@ h2 {
 h3{
     font-size: 25px;
     
+}
+
+h4 {
+    font-size: 20px;
 }
 
 p {

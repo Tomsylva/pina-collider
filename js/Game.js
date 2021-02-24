@@ -168,7 +168,7 @@ class Game {
         this.bonus += 1;
         this.cocktailHour();
         // cocktailSound.play();
-        const message = document.createElement("h3");
+        const message = document.createElement("h4");
         message.innerText = "Cocktail Time! +10 points";;
         document.body.appendChild(message);
         setTimeout(function(){
@@ -188,7 +188,7 @@ class Game {
       if (this.collisionCheck(this.player, beer)) {
         this.bonus += 1;
         this.drinkUp();
-        const message = document.createElement("h3");
+        const message = document.createElement("h4");
         message.innerText = "Cheers! +10 points";;
         document.body.appendChild(message);
         setTimeout(function(){
