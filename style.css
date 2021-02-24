@@ -5,13 +5,13 @@
 }
 
 #defaultCanvas0 {
-    padding: 70px 50px 30px 50px;
+    padding: 30px 50px;
 }
 
 h1 {
     font-family: 'Stick', sans-serif; 
     font-size: 70px;
-    padding: 0 0 50px 0;
+    padding: 0 0 30px 0;
     color: rgb(44, 87, 42);
 }
 
@@ -22,7 +22,7 @@ h2, h3, h4, button {
 
 h2 {
     padding: 30px 0 0 0;
-    font-size: 35px;
+    font-size: 32px;
 }
 
 h3{
@@ -36,7 +36,7 @@ h4 {
 
 p {
     font-family: 'Amatic SC', cursive;
-    font-size: 20px;
+    font-size: 22px;
     color: rgb(110, 110, 110);
 }
 
