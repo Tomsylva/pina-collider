@@ -28,6 +28,8 @@ class Coconut {
         this.y -= 10;
         this.velocity -= 22;
         this.bounces += 1;
+        coconutSound.setVolume(0.2);
+        coconutSound.play();
       }
     }
 
@@ -53,8 +55,10 @@ class phatCoconut extends Coconut {
       }
 
       if (this.y > 350) {
+        this.y = 350;
         if (this.bounces === 0) {
-          this.y = 350;
+          coconutSound.play();
+          this.bounces = 1;
         }
       }
 

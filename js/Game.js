@@ -88,6 +88,7 @@ class Game {
         this.bonus += 15;
         const message = document.createElement("h3");
         message.innerText = "Bullseye! +150 points";;
+        beerSound.play();
         document.body.appendChild(message);
         setTimeout(function(){
           message.parentNode.removeChild(message);
@@ -101,6 +102,7 @@ class Game {
         // Creates a play again button
         const message = document.createElement("h3");
         message.innerText = "Shark Attack!";
+        cocktailSound.play();
         const button = document.createElement("button");
         button.innerText = "Play again?";
         document.body.appendChild(message)
@@ -137,6 +139,7 @@ class Game {
       if (this.collisionCheck(this.player, coconut)) {
         noLoop();
         const message = document.createElement("h3");
+        coconutSound.play();
         message.innerText = "Knockout!";
         const button = document.createElement("button");
         button.innerText = "Play again?";
@@ -167,7 +170,8 @@ class Game {
       if (this.collisionCheck(this.player, cocktail)) {
         this.bonus += 1;
         this.cocktailHour();
-        // cocktailSound.play();
+        cocktailSound.setVolume(0.2);
+        cocktailSound.play();
         const message = document.createElement("h4");
         message.innerText = "Cocktail Time! +10 points";;
         document.body.appendChild(message);
@@ -188,6 +192,7 @@ class Game {
       if (this.collisionCheck(this.player, beer)) {
         this.bonus += 1;
         this.drinkUp();
+        beerSound.play();
         const message = document.createElement("h4");
         message.innerText = "Cheers! +10 points";;
         document.body.appendChild(message);
