@@ -28,7 +28,7 @@ class Coconut {
         this.y -= 10;
         this.velocity -= 22;
         this.bounces += 1;
-        coconutSound.setVolume(0.2);
+        coconutSound.setVolume(0.9);
         coconutSound.play();
       }
     }

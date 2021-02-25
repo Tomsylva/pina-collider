@@ -24,3 +24,6 @@ let up = 38;
 let coconutSound;
 let cocktailSound;
 let beerSound;
+let highScoreSound;
+let sharkSound;
+let drunkDrums;

@@ -13,7 +13,10 @@ function preload() {
   emptyHands = loadImage("./assets/crab2.png");
   coconutSound = loadSound("./assets/CoconutSound.mp3");
   beerSound = loadSound("./assets/BeerSound.mp3");
-  cocktailSound = loadSound ("./assets/CocktailSound.mp3");
+  cocktailSound = loadSound("./assets/CocktailSound.mp3");
+  sharkSound = loadSound("./assets/SharkSound.mp3");
+  highScoreSound = loadSound("./assets/HighScore.mp3");
+  drunkDrums = loadSound("./assets/DrunkMusic.mp3");
 }
 
 function draw() {

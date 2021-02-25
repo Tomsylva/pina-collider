@@ -98,7 +98,10 @@ class Game {
       if (this.collisionCheck(this.player, shark)) {
         // Stops the loop and game
         noLoop();
-
+        if (this.score / 10 + this.bonus * 10 > topScore){
+          highScoreSound.play();
+        }
+        drunkDrums.stop();
         // Creates a play again button
         const message = document.createElement("h3");
         message.innerText = "Shark Attack!";
@@ -138,6 +141,10 @@ class Game {
 
       if (this.collisionCheck(this.player, coconut)) {
         noLoop();
+        if (this.score / 10 + this.bonus * 10 > topScore){
+          highScoreSound.play();
+        }
+        drunkDrums.stop();
         const message = document.createElement("h3");
         coconutSound.play();
         message.innerText = "Knockout!";
@@ -218,12 +225,6 @@ class Game {
     }
   }
 
-  // countdown() {
-  //   setInterval(() => {
-  //     this.secondsToSober -= 1;
-  //   }, 1000);
-  // }
-
   restartGame() {
     if (this.score / 10 + this.bonus * 10 > topScore) {
       topScore = this.score / 10 + this.bonus * 10;
@@ -252,8 +253,10 @@ class Game {
     if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
-      // this.countdown();
+      drunkDrums.setVolume(0.6);
+      drunkDrums.loop();
       setTimeout(() => {
+        drunkDrums.pause();
         this.drunk = false;
         this.drinks = 0;
       }, 5000);
@@ -266,8 +269,10 @@ class Game {
     if (this.drinks === 3) {
       this.secondsToSober = 5;
       this.drunk = true;
-      // this.countdown();
+      drunkDrums.setVolume(0.6);
+      drunkDrums.loop();
       setTimeout(() => {
+        drunkDrums.stop();
         this.drunk = false;
         this.drinks = 0;
       }, 5000);

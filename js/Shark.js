@@ -10,5 +10,9 @@ class Shark {
     draw() {
         image (sharkImage, this.x, this.y, this.width, this.height);
         this.x -= 20;
+        if(this.x === WIDTH - 20){
+            sharkSound.setVolume(0.8);
+            sharkSound.play();
+        }
     }
 }
