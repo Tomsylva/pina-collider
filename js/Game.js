@@ -32,13 +32,10 @@ class Game {
       this.score--;
     }
 
+    // Draws the missle when fired with space key
     if (this.player.fire) {
       this.missile.draw();
     }
-
-    // Selects the seconds until sober in the DOM
-    // const timeToSober = document.querySelector("h3 .timer");
-
     // Selects breathaliser score in the DOM
     const breathaliser = document.querySelector("h3 span");
 
@@ -51,6 +48,7 @@ class Game {
     //Changes score to this.score % 10 and adds a bonus for every drink powerup accumulated
     currentScore.innerText = Math.floor(this.score / 10) + this.bonus * 10;
 
+    // Displays the highest score at all times in the span
     if (this.score / 10 + this.bonus * 10 > topScore) {
       highScore.innerText = Math.floor(this.score / 10 + this.bonus * 10);
     }
@@ -66,6 +64,7 @@ class Game {
       this.sharks.push(new Shark());
     }
 
+    // Ends the game very quickly if player tries to run backwards
     if (this.score < -50) {
       this.sharks.push(new Shark());
       this.bonus = -1000;
@@ -80,6 +79,7 @@ class Game {
         this.sharks.splice(index, 1);
       }
 
+      // Checks to see if bottle collides with shark and removes shark if true
       if (
         this.collisionCheck(this.missile, shark) &&
         this.player.fire === true
@@ -95,6 +95,7 @@ class Game {
         },1000);
       }
 
+      // Checks to see if player collides with shark
       if (this.collisionCheck(this.player, shark)) {
         // Stops the loop and game
         noLoop();
@@ -225,7 +226,9 @@ class Game {
     }
   }
 
+  // Sets everything needed back to 0 to restart game when button is pushed
   restartGame() {
+    // Checks high score and displays always the highest score
     if (this.score / 10 + this.bonus * 10 > topScore) {
       topScore = this.score / 10 + this.bonus * 10;
     }
@@ -247,6 +250,8 @@ class Game {
     loop();
   }
 
+  // Removes beer when collided with player and increases iterator
+  // If iterator is three, initiates a "drunk mode" where controls are reversed
   drinkUp() {
     this.brewskis.splice(this.index, 1);
     this.drinks += 1;
@@ -263,6 +268,7 @@ class Game {
     }
   }
 
+  // Same as drink up - could have made more DRY
   cocktailHour() {
     this.cocktails.splice(this.index, 1);
     this.drinks += 1;
